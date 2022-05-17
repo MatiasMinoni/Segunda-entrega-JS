@@ -1,5 +1,8 @@
 body {
-  background-color: bisque; }
+  background-color: bisque;
+  font-family: 'Lobster', cursive;
+  /* imagen */
+  background-image: url(../img/grieta.jpg); }
 
 img {
   width: 100%;
@@ -11,9 +14,10 @@ img {
   justify-content: space-between;
   text-align: center; }
 
-body {
-  /* imagen */
-  background-image: url(../img/grieta.jpg); }
-
 .col-sm {
   width: 20%; }
+
+fieldset {
+  font-size: x-large;
+  background-color: gray;
+  color: white; }

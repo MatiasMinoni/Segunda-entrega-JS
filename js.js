@@ -42,7 +42,7 @@ parry=20;
 
       }
         if(campeones[1].vida<=0){
-            swal.fire("Ganaste");
+            console.log("Ganaste");
          
         }
     swal.fire("La vida de " + campeones[1].nombre + " es " + campeones[1].vida);
@@ -67,13 +67,12 @@ parry=20;
             while(campeones[0].vida!=100){
                 campeones[0].vida=curar;
                 
-                swal.fire("Pocion: Tu vida es " + campeones[0].vida);
+                swal.fire("Pocion: La vida de "+ campeones[0].nombre + " es "+ campeones[0].vida);
                 
-                if (curar>=100){
-                    campeones[0].vida=90;
+                if (campeones[0].vida=100){
+                    
                     swal.fire("Tu vida esta completa");
                  
-                    break;
                 }
         break;
         if  (curar<=10){
@@ -82,29 +81,37 @@ parry=20;
             break;
 
         }
+       
                 }});
             
                 var contraatacar=document.getElementById("parry_ekko");
                 contraatacar.addEventListener("click", function(){
                     var contraatacar=(campeones[1].vida - parry)
-                    attack_ekko.disabled=true;
-                    parry_ekko.disabled=true;
-                    heal_ekko.disabled=true;
-                    attack_illaoi.disabled=false;
-                    parry_illaoi.disabled=false;
-                    heal_illaoi.disabled=false;
-                   
+          
                     while(campeones[1].vida>0){
-                       campeones[1].vida=contraatacar;
-                          if (parry=0){
-                              swal.fire("no puedes atacar")
-                            break;
-                          }
-                          else(parry=20)
-                              swal.fire("atacaste");
-                          break;
+                        campeones[1].vida=contraatacar;
+                      
+                            attack_illaoi.disabled=false;
+                        parry_illaoi.disabled=false;
+                        heal_illaoi.disabled=false;
+                        attack_ekko.disabled=true;
+                        parry_ekko.disabled=true;
+                        heal_ekko.disabled=true;
+                 
+                      
                         
-    }});
+                              
+                                 if (parry<=0){
+                                     parry=20;
+                                     swal.fire("No puedes contraatacar");
+                                     break;
+                                 }
+                           else(parry=20);
+                           swal.fire('La vida de ' + campeones[1].nombre + ' es ' + campeones[1].vida);
+                           break;
+                            }});
+                    
+
                     
     
         
@@ -159,11 +166,9 @@ curar.addEventListener("click", function(){
 
     while(campeones[1].vida!=100){
         campeones[1].vida=curar;
-        swal.fire("Pocion: Tu vida es " + campeones[1].vida);
-        if (curar!=100){
-            campeones[1].vida=90;
+        swal.fire("Pocion: La vida de "+ campeones[1].nombre + " es " + campeones[1].vida);
+        if (campeones[1].vida===100){
             swal.fire("Tu vida esta completa");
-         
             break;
         }
        
@@ -171,10 +176,8 @@ break;
 if  (curar<=10){
     swal.fire("Pocion: Tu vida es " + campeones[1].vida);
     break;
-if  (curar===100){
-    swal.fire("Tu vida esta completa");
-    break;
-}}}});
+
+}}});
 
         
 
@@ -182,24 +185,29 @@ if  (curar===100){
         contraatacar.addEventListener("click", function(){
             var contraatacar=(campeones[0].vida - parry)
           
-while(campeones[0].vida>0){
+            while(campeones[0].vida>0){
+                campeones[0].vida=contraatacar;
+              
+                    attack_illaoi.disabled=true;
+                parry_illaoi.disabled=true;
+                heal_illaoi.disabled=true;
+                attack_ekko.disabled=false;
+                parry_ekko.disabled=false;
+                heal_ekko.disabled=false;
+         
+             
+                      
+                         if (parry<=0){
+                             parry=20;
+                             swal.fire("No puedes contraatacar");
+                             break;
+                         }
+                   else(parry=20);
+                   swal.fire('La vida de ' + campeones[0].nombre + ' es ' + campeones[0].vida);
+                   break;
+                    }});
+            
 
-    campeones[0].vida=contraatacar;
-    parry=0;
-        attack_illaoi.disabled=true;
-    parry_illaoi.disabled=true;
-    heal_illaoi.disabled=true;
-    attack_ekko.disabled=false;
-    parry_ekko.disabled=false;
-    heal_ekko.disabled=false;
-    swal.fire("La vida de " + campeones[0].nombre +" es "+campeones[0].vida);
-    
-    if (parry!=20){
-        swal.fire("No puedes contraatacar");
-        break;
-}
-       
-        }});
 
 
 localStorage.setItem("campeones", [
