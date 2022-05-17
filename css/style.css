@@ -1,0 +1,19 @@
+body {
+  background-color: bisque; }
+
+img {
+  width: 100%;
+  height: 100%; }
+
+.hud {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center; }
+
+body {
+  /* imagen */
+  background-image: url(../img/grieta.jpg); }
+
+.col-sm {
+  width: 20%; }
